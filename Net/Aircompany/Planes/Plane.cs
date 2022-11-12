@@ -17,12 +17,12 @@ namespace Aircompany.Planes
             _maxLoadCapacity = maxLoadCapacity;
         }
 
-        public string GetModel()
+        public string Model()
         {
             return _model;
         }
 
-        public int GetMS()
+        public int MAXSpeed()
         {
             return _maxSpeed;
         }
