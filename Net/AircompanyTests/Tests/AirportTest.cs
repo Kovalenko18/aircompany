@@ -34,42 +34,32 @@ namespace AircompanyTests.Tests
         {
             Airport airport = new Airport(planes);
             List<MilitaryPlane> transportMilitaryPlanes = airport.GetTransportMilitaryPlanes().ToList();
-            bool hasMilitaryTransportPlane = false;
             foreach (MilitaryPlane militaryPlane in transportMilitaryPlanes)
             {
-                if ((militaryPlane.PlaneTypeIs() == MilitaryType.TRANSPORT))
-                {
-                    hasMilitaryTransportPlane = true;
-                }
+                Assert.IsTrue(militaryPlane.PlaneType() == MilitaryType.TRANSPORT);
             }
-            Assert.IsTrue(hasMilitaryTransportPlane);
         }
 
         [Test]
-        public void MyTest2()
+        public void expectedPlaneWithMaxPassengersCapacity()
         {
             Airport airport = new Airport(planes);
             PassengerPlane expectedPlaneWithMaxPassengersCapacity = airport.GetPassengerPlaneWithMaxPassengersCapacity();           
         }
 
         [Test]
-        public void MyTest3()
+        public void nextPlaneMaxLoadCapacityIsHigherThanCurrent()
         {
             Airport airport = new Airport(planes);
             airport = airport.SortByMaxLoadCapacity();
             List<Plane> planesSortedByMaxLoadCapacity = airport.GetPlanes().ToList();
 
-            bool nextPlaneMaxLoadCapacityIsHigherThanCurrent = true;
             for (int i = 0; i < planesSortedByMaxLoadCapacity.Count - 1; i++)
             {
                 Plane currentPlane = planesSortedByMaxLoadCapacity[i];
                 Plane nextPlane = planesSortedByMaxLoadCapacity[i + 1];
-                if (currentPlane.MAXLoadCapacity() > nextPlane.MAXLoadCapacity())
-                {
-                    nextPlaneMaxLoadCapacityIsHigherThanCurrent = false;
-                }
+                Assert.That(currentPlane.MAXLoadCapacity() > nextPlane.MAXLoadCapacity() == true);
             }
-            Assert.That(nextPlaneMaxLoadCapacityIsHigherThanCurrent==true);
         }
     }
 }
