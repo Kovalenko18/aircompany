@@ -70,7 +70,7 @@ namespace Aircompany
 
         public Airport SortByMaxSpeed()
         {
-            return new Airport(Planes.OrderBy(w => w.GetMS()));
+            return new Airport(Planes.OrderBy(w => w.MaxSpeed()));
         }
 
         public Airport SortByMaxLoadCapacity()
@@ -87,7 +87,7 @@ namespace Aircompany
         public override string ToString()
         {
             return "Airport{" +
-                    "planes=" + string.Join(", ", Planes.Select(x => x.GetModel())) +
+                    "planes=" + string.Join(", ", Planes.Select(x => x.Model())) +
                     '}';
         }
     }
